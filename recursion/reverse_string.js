@@ -10,6 +10,8 @@
  *     => 'cba'
  **/
 
+
+//Recursive solution
 //time complexity: O(n)
 //aux complexity: O(n)
  var strReverse = function(str) {
@@ -25,6 +27,18 @@
   }
   traverse(str.length-1);
   return result;
- }
+ };
 
-// console.log(strReverse('abc'));
+console.log(strReverse('abcdefghijklmnopqrstuvwxyz'));
+
+//Iterative solution
+//time complexity: O(n)
+//aux complexity: O(n)
+var strReverse_it = function(str) {
+  var result = "";
+  for(var i = str.length - 1; i >= 0; i--) {
+    result += str[i];
+  }
+  return result;
+};
+console.log(strReverse_it('abcdefghijklmnopqrstuvwxyz'));
