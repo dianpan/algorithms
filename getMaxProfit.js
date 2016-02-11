@@ -16,9 +16,9 @@
 // *No "shorting"—you must buy before you sell. You may not buy and sell in the same time step (at least 1 minute must pass).
 
 
-//time complexity: O(n+k)
-//space complexity: O(1)
-
+//Solution 1 using indexes:
+//time: O(n+k)
+//space: O(1)
 function getMaxProfit(arr) {
     if(arr.length < 2) {return "there must be at least 2 stock prices";}
     var lowestPrice = arr[0];
@@ -36,11 +36,26 @@ function getMaxProfit(arr) {
     return highestPrice - lowestPrice;
 }
 
+//Solution 2 using potential profit:
+//time: O(n)
+//space: O(1)
+function getMaxP(arr) {
+  if(arr.length < 2) {return "Getting a profit requires at least 2 prices";}
+  var lowestPrice = arr[0];
+  var maxProfit = arr[1] - arr[0];
+  for (var i = 1; i < arr.length; i++) {
+    var potentialProfit = arr[i] - lowestPrice;
+    lowestPrice = Math.min(lowestPrice, arr[i]);
+    maxProfit = Math.max(maxProfit, potentialProfit);
+  }
+  return maxProfit;
+}
+
+
 var arr = [10, 7, 5, 8, 11, 9];
 var arr2 = [1,1,1,1,1];
 var arr3 = [];
-//sln doesn't account for negative stock prices
-//var arr4 = [-1, 0, -2, -3];
+//sln doesn't account for negative stock prices ie var arr4 = [-1, 0, -2, -3];
 
 console.log(getMaxProfit(arr));
 console.log(getMaxProfit(arr2));
